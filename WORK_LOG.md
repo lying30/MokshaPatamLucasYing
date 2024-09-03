@@ -1,9 +1,9 @@
-Name: YOUR NAME HERE
+Name: Lucas Ying
 
-| Date    |  Time  |                                     Update |
-|:--------|:------:|-------------------------------------------:|
-| April 5 | 9-10pm | I tried to write abstract, efficient code. |
-|         |        |                                            |
+| Date          |    Time     |                                                                                                                                                                                                                                                                                                                                                                    Update |
+|:--------------|:-----------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| September 2nd | 8:00-8:30pm |  For the first 30 minutes of my first attempt, I just brainstormed ideas because I was somewhat confused where to start. I think that I will need to implement some sort of breadth first search like we did in the mazesolver problem set a while back. I think that problem set is similar due to the objective being to find the fastest route to the end of the maze. |
+|               |             |                                                                                                                                                                                                                                                                                                                                                                           |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.

@@ -16,6 +16,11 @@ public class MokshaPatam {
      */
     public static int fewestMoves(int boardsize, int[][] ladders, int[][] snakes) {
 
+        // Implement some sort of Breadth First Search similar to Maze Solver in CS2
+        // In order to do this I will probably need a way to access different points on the board
+        // So maybe I start with implementing an array of points to access?
+
+
         return 0;
     }
 }
