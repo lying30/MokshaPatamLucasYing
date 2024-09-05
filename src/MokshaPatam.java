@@ -29,11 +29,11 @@ public class MokshaPatam {
         for (int i = 1; i <= boardsize; i++){
             board[i] = i;
         }
-        for (int i = 0; i < ladders.length; i++){
-            board[ladders[i][0]] = ladders[i][1];
+        for (int[] ladder : ladders) {
+            board[ladder[0]] = ladder[1];
         }
-        for (int i = 0; i < snakes.length; i++){
-            board[snakes[i][0]] = snakes[i][1];
+        for (int[] snake : snakes) {
+            board[snake[0]] = snake[1];
         }
 
         // Go through and maybe use a queue like we did in maze solver,
@@ -46,6 +46,29 @@ public class MokshaPatam {
         // without hitting a snake --> so 6 as long as there isnt a snake on 6
         // If there are two ladders in the upcoming 6 spaces, compare the first number to see which one goes further up the board
         //
+
+
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] marked = new boolean[boardsize +1];
+
+        queue.add(1);
+        marked[1] = true;
+        int numMoves
+
+
+        queue.enqueue(s);
+        while (!queue.isEmpty()){
+            int v = queue.dequeue();
+            for (int w: G.adj(v))
+                if (!marked[w])
+            {
+                edgeTo[w] = v;
+                marked[w] = true;
+                queue.enqueue(w);
+            }
+
+        }
+
 
 
 
