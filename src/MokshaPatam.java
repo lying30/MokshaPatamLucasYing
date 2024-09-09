@@ -13,10 +13,6 @@ import java.util.Queue;
 
 public class MokshaPatam {
 
-    /**
-     * TODO: Complete this function, fewestMoves(), to return the minimum number of moves
-     *  to reach the final square on a board with the given size, ladders, and snakes.
-     */
     public static int fewestMoves(int boardsize, int[][] ladders, int[][] snakes) {
 
         // Implement some sort of Breadth First Search similar to Maze Solver in CS2
@@ -48,30 +44,66 @@ public class MokshaPatam {
         //
 
 
+        // While there are still nodes left in the queue: 			O(V)
+
+        //	currentNode = queue.remove()								O(1)
+        //	If currentNode == last square, return its roll #!	O(1)
+        //	For each roll (1-6), r:									O(1)
+        //		node = the node r spaces away.						O(1)
+        //		If it is the beginning of a snake/ladder:			O(1)
+        //			node = the ending node of the snake/ladder	O(1)
+        //		If node has never been visited:						O(1)
+        //			Save the # of rolls it took to get to node	O(1)
+        //			Add node to the back of the queue
+
+
+        // Add the first node, 1, to the queue
         Queue<Integer> queue = new LinkedList<>();
-        boolean[] marked = new boolean[boardsize +1];
-
+        boolean[] visited = new boolean[boardsize +1];
         queue.add(1);
-        marked[1] = true;
-        int numMoves
+        visited[1] = true;
+        int numRolls = 0;
 
+        // While there are still nodes left in the queue:
+        while (!queue.isEmpty()) {
+            // Number of nodes at depth level
+            int size = queue.size();
+            numRolls++;
 
-        queue.enqueue(s);
-        while (!queue.isEmpty()){
-            int v = queue.dequeue();
-            for (int w: G.adj(v))
-                if (!marked[w])
-            {
-                edgeTo[w] = v;
-                marked[w] = true;
-                queue.enqueue(w);
+            // Go through all positions at depth level
+            for (int i = 0; i<size; i++) {
+                //	currentNode = queue.remove()
+                int currentNode = queue.remove();
+
+                //	If currentNode == last square, return its roll #!
+                if (currentNode == boardsize) {
+                    // Return number of rolls to get there
+                    return numRolls - 1;
+                }
+
+                //	For each roll (1-6), r:
+                for (int j = 1; j <= 6; j++){
+                    int nextSpot = currentNode+j;
+                    // To avoid going out of bounds
+                    if (nextSpot > boardsize){
+                        continue;
+                    }
+                    // Node = the node r spaces away so move to the next spot
+                    nextSpot = board[nextSpot];
+
+                    // If node has never been visited:
+                    if (!visited[nextSpot]) {
+                        visited[nextSpot] = true;
+
+                        // Save the # of rolls it took to get to node
+                        // Add node to the back of the queue
+                        queue.add(nextSpot);
+                    }
+
+                }
             }
-
         }
-
-
-
-
-        return 0;
+        // If no path to final square, return -1
+        return -1;
     }
 }
